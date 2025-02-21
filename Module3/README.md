@@ -46,3 +46,8 @@ If the visual aspect proves difficult, JS may not be the best answer to this sof
 do plenty of research and have a plan to make a supplemental software that may not display a complete project preview, but will still allow all customizations to be made and give the user a fair understanding of the product they are designing. 
 
 https://www.youtube.com/watch?v=HGRnYpLkkO8
+https://www.youtube.com/watch?v=mIWplmdkwDk
+https://stackoverflow.com/questions/58584613/how-to-show-user-input-over-canvas-with-multiple-text-fields-with-text-wrapping
+https://stackoverflow.com/questions/4720343/loading-basic-html-in-node-js
+https://expressjs.com/en/starter/installing.html
+

@@ -1,0 +1,80 @@
+:root {
+    /* change the values below to your colors from your palette */
+    --primary-color: #B8A6D9;
+    --secondary-color: #80B0FF;
+    --accent-color1: #FDD5DE;
+    --accent-color2: #D6C3EC;
+    --accent-color3: #EFF5FF;
+    --text-dark: black;
+    --text-light: white;
+    --primary-font: "Dancing Script", serif;
+    --secondary-font: "Times New Roman", serif;
+    --paragraph-font: "Gentium Plus", serif;
+    /* these colors below should be chosen from among your palette colors above */
+    --headline-color-on-white: var(--primary-color);
+    /* headlines on a white background */
+    --headline-color-on-color: var(--secondary-color);
+    /* headlines on a colored background */
+    --paragraph-color-on-white: black;
+    /* paragraph text on a white background */
+    --paragraph-color-on-color: white;
+    /* paragraph text on a colored background */
+    --paragraph-background-color: var(--primary-color);
+    --nav-link-color: var(--primary-color);
+    --nav-background-color: var(--secondary-color);
+    --nav-hover-link-color: white;
+    --nav-hover-background-color: var(--primary-color);
+}
+
+.hide {
+    display: none;
+}
+
+header {
+    background-color: var(--accent-color3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+}
+
+.header-logo {
+    font-family: "Dancing Script", serif;
+    font-weight: 200;
+    font-size: 2.5em;
+    padding-left: 40px;
+    -webkit-text-stroke: 0.4px var(--secondary-color);
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-opt {
+    font-size: 1.3em;
+    font-family: "Gentium Plus", serif;
+    font-style: normal;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 20px;
+    width: 100px;
+    height: 30px;
+    margin-right: 40px;
+
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+
+.nav-opt:hover {
+    background-color: #90b7f4;
+    transform: translateY(-2px);
+    transition: 0.3s;
+}
