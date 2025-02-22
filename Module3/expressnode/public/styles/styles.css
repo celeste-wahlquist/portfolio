@@ -57,6 +57,7 @@ header {
     font-size: 1.3em;
     font-family: "Gentium Plus", serif;
     font-style: normal;
+    text-decoration: underline var(--secondary-color);
 
     display: flex;
     justify-content: center;

@@ -13,4 +13,7 @@
         display: flex;
     }
 
+    #canvas-window {
+        border: solid 2px black;
+    }
 }

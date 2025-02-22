@@ -24,11 +24,12 @@ function renderProductImages(file) {
 }
 
 function toggleSelectionMenu() {
-    const blanketSelectButton = document.querySelector('.blanket__color-dropdown-button');
-    const blanketImageButtons = document.querySelectorAll(".blanket-color");
+    const blanketDropdownButton = document.querySelector('.blanket__color-dropdown-button');
+    const blanketDropDown = document.querySelectorAll(".blanket-color");
     const blanketImages = document.getElementById('blanket__color-dropdown-menu');
 
     function toggleBlanketImages(event) {
+        // ai assistance with if else 
         if (blanketImages) {
             blanketImages.classList.toggle('hide');
         } else {
@@ -36,8 +37,27 @@ function toggleSelectionMenu() {
         }
     }
 
-    blanketImageButtons.forEach(button => {
-        button.addEventListener('click', toggleBlanketImages);
+    function dropdownButtonDisplay(event) {
+        const button = event.target.closest("button");
+        // replace is curtosey of chatgpt
+        const blanketSelectedColor = button.id.replace(/-/g, " ").replace(".png", "");
+        blanketDropdownButton.textContent = `Blanket Color: ${blanketSelectedColor}`;
+    }
+
+    // function toggleCustomizeWindow(event) {
+    //     const canvas = document.getElementById('canvas-window');
+    //     const canvasContent = canvas.getContext('2d')
+
+    // }
+
+    blanketDropDown.forEach(button => {
+        button.addEventListener('click', (event) => {
+            toggleBlanketImages(event);
+            dropdownButtonDisplay(event);
+        });
+        button.addEventListener('mouseover', (event) => {
+            toggleCustomizeWindow();
+        });
     });
 }
 
