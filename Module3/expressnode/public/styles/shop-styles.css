@@ -1,0 +1,16 @@
+.cust-window {
+    border: solid 2px black;
+}
+
+@media screen and (min-width: 950px) {
+
+    .blanket-color img {
+        width: 60px;
+        height: 60px;
+    }
+
+    main {
+        display: flex;
+    }
+
+}

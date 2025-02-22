@@ -12,8 +12,8 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-    <script type="module" src="scripts/customize.js"></script>
-    <script type="module" src="scripts/get-files.js"></script>
+    <script type="module" src="scripts/blankets.js" defer></script>
+    <script type="module" src="scripts/selections.js" defer></script>
     <meta author="Celeste Wahlquist">
     <meta description="A customization page for A Bit of Alexandria">
 </head>
@@ -32,20 +32,12 @@
     </header>
     <main>
         <canvas id="cust-window" class="cust-window" width="600%" height="600%">
-            <img src="images/silk-blankets/baby-blue.png">
         </canvas>
         <div class="blanket__customizations">
-            <button class="blanket__color-dropdown-button" aria-label="open blanket color dropdown menu">Blanket Color:
+            <button class="blanket__color-dropdown-button blanket-color"
+                aria-label="open blanket color dropdown menu">Blanket Color:
             </button>
-            <div id="blanket__color-dropdown-menu">
-                <!-- <button class="blanket-color" id="baby-blue-blanket"><img
-                        src="images/silk blankets/baby-blue.png"></button>
-                <button class="blanket-color" id="turqoise-blanket"><img
-                        src="images/silk blankets/turqoise.png"></button>
-
-                <button class="blanket-color" id="yellow-blanket"><img
-                        src="images/blankets/yellow-blanket.png"></button> -->
-            </div>
+            <div id="blanket__color-dropdown-menu"></div>
         </div>
     </main>
     <footer></footer>
