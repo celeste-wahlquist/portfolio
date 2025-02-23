@@ -23,15 +23,15 @@ function renderProductImages(file) {
     blanketDiv.innerHTML += htmlBlanketContent;
 }
 
-function toggleSelectionMenu() {
+function toggleSelectionMenu(file) {
     const blanketDropdownButton = document.querySelector('.blanket__color-dropdown-button');
-    const blanketDropDown = document.querySelectorAll(".blanket-color");
-    const blanketImages = document.getElementById('blanket__color-dropdown-menu');
+    const blanketButton = document.querySelectorAll(".blanket-color");
+    const blanketDiv = document.getElementById('blanket__color-dropdown-menu');
 
-    function toggleBlanketImages(event) {
+    function toggleBlanketDiv(event) {
         // ai assistance with if else 
-        if (blanketImages) {
-            blanketImages.classList.toggle('hide');
+        if (blanketDiv) {
+            blanketDiv.classList.toggle('hide');
         } else {
             console.error("Element with class 'blanket__color-dropdown-menu' not found.");
         }
@@ -44,19 +44,28 @@ function toggleSelectionMenu() {
         blanketDropdownButton.textContent = `Blanket Color: ${blanketSelectedColor}`;
     }
 
-    // function toggleCustomizeWindow(event) {
-    //     const canvas = document.getElementById('canvas-window');
-    //     const canvasContent = canvas.getContext('2d')
+    function toggleCustomizeWindow(imageSrc) {
+        const canvas = document.getElementById('canvas-window');
+        const canvasContent = canvas.getContext('2d')
 
-    // }
+        canvasContent.clearRect(0, 0, canvas.width, canvas.height)
 
-    blanketDropDown.forEach(button => {
+        const img = new Image();
+        img.onload = () => {
+            canvasContent.drawImage(img, 0, 0, canvas.width, canvas.height);
+        }
+        img.src = imageSrc;
+    }
+
+    blanketButton.forEach(button => {
         button.addEventListener('click', (event) => {
-            toggleBlanketImages(event);
+            toggleBlanketDiv(event);
             dropdownButtonDisplay(event);
         });
         button.addEventListener('mouseover', (event) => {
-            toggleCustomizeWindow();
+            const image = button.querySelector('img');
+            const imageSrc = image.src;
+            toggleCustomizeWindow(imageSrc);
         });
     });
 }
