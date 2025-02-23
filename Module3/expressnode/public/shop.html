@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <script type="module" src="scripts/blankets.js" defer></script>
     <script type="module" src="scripts/selections.js" defer></script>
     <meta author="Celeste Wahlquist">
@@ -39,8 +40,11 @@
             </button>
             <div id="blanket__color-dropdown-menu"></div>
             <div id="blanket__design-dropdown-menu"></div>
-            <label>If you'd like embroidered writing, please input your text below</label>
-            <input class="blanketText" placeholder="Your custom text!">
+            <div id="blanket__embroidery-input">
+                <label>If you'd like embroidered writing, please input your text below</label>
+                <input type="text" class="blanketText" placeholder="Your custom text!">
+                <button id="submitText">submit</button>
+            </div>
         </div>
     </main>
     <footer></footer>
