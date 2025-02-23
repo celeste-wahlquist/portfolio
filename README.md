@@ -10,6 +10,7 @@ Purpose: to showcase myself and have a way of connecting with new opportunities
 
 [Software Demo Video Module 1](http://youtube.link.goes.here)
 [Software Demo Video Module 2](https://youtu.be/bTmmmRCUYdM)
+[Software Demo Video Module 3](https://youtu.be/EPGiZCPrZig)
 
 # Development Environment
 
