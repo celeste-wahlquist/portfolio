@@ -46,16 +46,16 @@ How many hours did you spend on this module and the team project this Sprint?
 
 |              |Hours|
 |------------------|-|
-|Individual Module |18hrs |
+|Individual Module |6hrs |
 |Team Project      | 1hr|
 
 ### Retrospective
 - What learning strategies worked well in this module?
-  Lots and lots of research, also recording all the sources I used in the Readme.md made it so I could return to my sources frequently
+  YouTube. I looked up lots of videos for basic python tiktaktoe and others that were tutorials for using tkinter as an interface. I researched before choosing this as my GUI platform and because I had a purpose in mind I was able to easily make a good choice in GUI. 
 - What strategies (or lack of strategy) did not work well?
-  Overachieving, my plans for this module were far to high of expectations.
+  I should have considered all elements I may have wanted to add before getting started and jumping to new ideas for what could improve the program before it was done. 
 - How can you improve in the next module?
-  Consider the timeframe given and make a more realistic goal.
+  Take time to fully plan out every aspect that I want to add into my module before starting and planning what can reasonably be done and what is a bit much.
 
 
 <!-- Create this Markdown to a PDF and submit it. In visual studio code you can convert this to a pdf with any one of the extensions. -->

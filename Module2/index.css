@@ -194,25 +194,6 @@ button:hover {
     font-size: 1em;
 }
 
-/* .bg-image {
-    position: absolute;
-    width: 100px; 
-    height: 100px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.5; 
-} */
-
-/* .bg1 { background-image: url('/images/goldfish-left.png'); top: 10%; left: 5%; }
-.bg2 { background-image: url('/images/anglerfish-right.png'); top: 50%; left: 30%; }
-.bg3 { background-image: url('/images/pufferfish-right.png'); top: 80%; right: 20%; } */
-
-
-
-
-
-
-
 
 .fish {
     position: absolute;
@@ -254,4 +235,71 @@ button:hover {
         right: 110%;
         transform: translateY(0px);
     }
+}
+
+@media screen and (max-width: 600px) {
+
+    .navigation-menu {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .intro-image img {
+        width: 20rem;
+    }
+
+    /* .bubble {
+        width: 6rem;
+        height: 6rem;
+    } */
+
+    /* .bubble img {
+        width: 50px;
+    } */
+
+    .skill-title {
+        font-size: 3rem;
+    }
+
+    .hi {
+        font-size: 3rem;
+    }
+
+    .intro {
+        flex-direction: column;
+    }
+
+    .navigation-menu {
+        height: 3rem;
+    }
+
+    .nav-opt {
+        width: 6rem;
+        height: 1.5rem;
+        margin-right: 1rem;
+    }
+
+    .skills {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+
+    .skill-bubbles {
+        height: 400px;
+    }
+
+    .bubble {
+        width: 4rem;
+        height: 4rem;
+        margin: 1rem;
+    }
+
+    .bubble img {
+        width: 30px;
+    }
+
+    .fish {
+        height: 100px;
+    }
+
 }

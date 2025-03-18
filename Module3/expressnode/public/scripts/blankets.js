@@ -1,11 +1,15 @@
 const blanketDiv = document.getElementById('blanket__color-dropdown-menu');
+const designDiv = document.getElementById('design__color-dropdown-menu');
 
 async function fetchBlanketImages() {
     try {
+        // Fetching the filenames of the images in the silk-blankets directory
+        //ai assistance with my awai and fetch responses
         const response = await fetch('/api/get-files');
+        //using await to ensure that the fetch request is completed before moving on to the next line of code.
         const data = await response.json();
         data.forEach(file => {
-            renderProductImages(file);
+            renderBlanketImages(file);
         });
         toggleSelectionMenu();
     }
@@ -14,7 +18,8 @@ async function fetchBlanketImages() {
     }
 }
 
-function renderProductImages(file) {
+function renderBlanketImages(file) {
+    // create the html context for each image file
     const htmlBlanketContent = `
         <button class="blanket-color" id="${file}">
             <img src="images/silk-blankets/${file}">
@@ -23,13 +28,40 @@ function renderProductImages(file) {
     blanketDiv.innerHTML += htmlBlanketContent;
 }
 
+async function fetchDesignImages() {
+    // Fetching the filenames of the designs in the blanket-designs directory
+    try {
+        const response = await fetch('/api/get-design/files');
+        //using await to ensure that the fetch request is completed before moving on to the next line of code.
+        const data = await response.json();
+        data.forEach(file => {
+            renderDesignImages(file);
+        });
+    } catch (err) {
+        console.error("Failed to get filenames: ", err);
+    }
+}
+
+function renderDesignImages(file) {
+    // create the html context for each image file
+    const htmlDesignContent = `
+            <button class="design-color" id="${file}">
+                <img src="images/blanket-designs/${file}">
+            </button>
+        `;
+    designDiv.innerHTML += htmlDesignContent;
+}
+
 function toggleSelectionMenu(file) {
+    // all constructs for the following code are established here
+    //this includes our blanket drop down, blanket color button, blanket div, text button, and current image source
     const blanketDropdownButton = document.querySelector('.blanket__color-dropdown-button');
     const blanketButton = document.querySelectorAll(".blanket-color");
     const blanketDiv = document.getElementById('blanket__color-dropdown-menu');
     const textButton = document.getElementById('submitText');
     let currentImageSrc = '';
 
+    //toggle the blanket images
     function toggleBlanketDiv(event) {
         // ai assistance with if else 
         if (blanketDiv) {
