@@ -1,0 +1,18 @@
+function uploadImageDesign(imageSrc) {
+    const canvas = document.getElementById('canvas-window');
+    const ctx = canvas.getContext('2d');
+
+    const img = new Image();
+    img.onload = () => {
+        const scale = 0.6; // Adjust scale to control size
+        const newWidth = img.width * scale;
+        const newHeight = img.height * scale;
+        
+        const x = (canvas.width - newWidth) / 2; // Correct centering
+        const y = 0; // Keep it at the top
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous image
+        ctx.drawImage(img, x, y, newWidth, newHeight); // Draw image at correct position
+    };
+    img.src = imageSrc;
+}

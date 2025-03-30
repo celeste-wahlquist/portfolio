@@ -14,7 +14,6 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <script type="module" src="scripts/blankets.js" defer></script>
-    <script type="module" src="scripts/selections.js" defer></script>
     <meta author="Celeste Wahlquist">
     <meta description="A customization page for A Bit of Alexandria">
 </head>
@@ -25,31 +24,45 @@
         <div class="drop-down">
             <!-- <button class="dropbtn"><img src=""></button> -->
             <nav class="navigation">
-                <a href="home.html"><button class="nav-opt">HOME</button></a>
-                <a href="shop.html"><button class="nav-opt">SHOP</button></a>
-                <button class="nav-opt">CART</button>
+                <a href="home.html"><button class="nav-opt button">HOME</button></a>
+                <a href="shop.html"><button class="nav-opt button">SHOP</button></a>
+                <button class="nav-opt button">CART</button>
             </nav>
         </div>
     </header>
     <main>
         <canvas id="canvas-window" width="600%" height="600%">
         </canvas>
-        <div class="blanket__customizations">
-            <button class="blanket__color-dropdown-button blanket-color"
-                aria-label="open blanket color dropdown menu">Blanket Color:
-            </button>
+        <form id="blanketCustomizationForm">
+
+            <label for="blanketColor"></label>
+            <button type="button" class="blanket__color-dropdown-button blanket-color button"
+                aria-label="open blanket color dropdown menu">Select Blanket Color</button>
             <div id="blanket__color-dropdown-menu"></div>
-            <div id="blanket__design-dropdown-menu">
-                <button class="blanket__design-dropdown-button blanket-design"
-                    aria-label="open blanket design dropdown menu">Blanket Design:
-                </button>
+
+            <div class="embroideryText">
+                <label class="textInputLabel" for="customText">If you'd like embroidered writing, please input your text
+                    below
+                </label>
+
+                <input type="text" id="customText" name="customText" class="blanketText"
+                    placeholder="Your custom text!">
             </div>
-            <div id="__embroidery-input">
-                <label>If you'd like embroidered writing, please input your text below</label>
-                <input type="text" class="blanketText" placeholder="Your custom text!">
-                <button id="submitText">submit</button>
-            </div>
-        </div>
+
+            <button type="button" class="blanket__embroidery-thread-dropdown-button button"
+                aria-label="open thread color dropdown menu">Select Thread Color</button>
+            <div id="blanket__embroidery-thread-dropdown-menu"></div>
+
+
+            <button type="button" class="blanket__design-dropdown-button blanket-design button"
+                aria-label="open blanket design dropdown menu">Select Design</button>
+            <div id="blanket__design-dropdown-menu"></div>
+
+            <!-- <button type="reset" id="startOver" class="button"
+                aria-label="begin the design process again">Submit</button> -->
+
+        </form>
+
     </main>
     <footer></footer>
 </body>

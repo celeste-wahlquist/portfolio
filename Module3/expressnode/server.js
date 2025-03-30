@@ -1,16 +1,18 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const fs = require('fs').promises; // Use promises for async/await
+
 
 const app = express();
 const PORT = 8080;
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
-
 
 // Establishing pile paths to our image filing system. 
 // These will be referenced in blankets.js specifically in the fetchBlanketImages() and fetchDesignImages() functions.

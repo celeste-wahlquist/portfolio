@@ -1,6 +1,6 @@
 const blanketDiv = document.getElementById('blanket__color-dropdown-menu');
-const designDiv = document.getElementById('design__color-dropdown-menu');
-
+const designDiv = document.getElementById('blanket__design-dropdown-menu');
+let designImageSrc;
 async function fetchBlanketImages() {
     try {
         // Fetching the filenames of the images in the silk-blankets directory
@@ -17,6 +17,7 @@ async function fetchBlanketImages() {
         console.error("Failed to get filenames: ", err);
     }
 }
+const threadDiv = document.getElementById('blanket__embroidery-thread-dropdown-menu');
 
 function renderBlanketImages(file) {
     // create the html context for each image file
@@ -45,20 +46,38 @@ async function fetchDesignImages() {
 function renderDesignImages(file) {
     // create the html context for each image file
     const htmlDesignContent = `
-            <button class="design-color" id="${file}">
+            <button class="blanket-design" id="${file}">
                 <img src="images/blanket-designs/${file}">
             </button>
         `;
     designDiv.innerHTML += htmlDesignContent;
 }
 
+function fetchThreadColors() {
+    const threadColors = ["#FF5733", "#33FF57", "#3357FF", "#F1C40F", "#8E44AD", "#E74C3C", "#2ECC71", "#1ABC9C"];
+    threadColors.forEach(color => {
+        renderThreadColors(color);
+    });
+}
+
+function renderThreadColors(color) {
+    const htmlThreadContent = `
+        <button class="thread-color" style="background-color: ${color}"></button>
+    `;
+    threadDiv.innerHTML += htmlThreadContent;
+}
+
 function toggleSelectionMenu(file) {
     // all constructs for the following code are established here
     //this includes our blanket drop down, blanket color button, blanket div, text button, and current image source
     const blanketDropdownButton = document.querySelector('.blanket__color-dropdown-button');
+    const designDropdownButton = document.querySelector('.blanket__design-dropdown-button');
     const blanketButton = document.querySelectorAll(".blanket-color");
+    const designButton = document.querySelectorAll(".blanket-design");
     const blanketDiv = document.getElementById('blanket__color-dropdown-menu');
-    const textButton = document.getElementById('submitText');
+    const designDiv = document.getElementById('blanket__design-dropdown-menu');
+    const textButton = document.getElementById('customText');
+
     let currentImageSrc = '';
 
     //toggle the blanket images
@@ -71,11 +90,28 @@ function toggleSelectionMenu(file) {
         }
     }
 
+    function toggleDesignDiv(event) {
+        //separated the two toggle functions with individual else error messages for better debugging
+        if (designDiv) {
+            designDiv.classList.toggle('hide');
+        } else {
+            console.error("Element with class 'blanket__design-dropdown-menu' not found.");
+        }
+    }
+
     function dropdownButtonDisplay(event) {
         const button = event.target.closest("button");
         // replace is curtosey of chatgpt
         const blanketSelectedColor = button.id.replace(/-/g, " ").replace(".png", "");
         blanketDropdownButton.textContent = `Blanket Color: ${blanketSelectedColor}`;
+    }
+
+    function dropdownDesignButtonDisplay(event) {
+        const button = event.target.closest("button");
+        if (button) {
+            const designSelected = button.id.replace(/-/g, " ").replace(".png", "");
+            designDropdownButton.textContent = `Blanket Design: ${designSelected}`;
+        }
     }
 
     function toggleCustomizeWindow(currentImageSrc) {
@@ -90,6 +126,7 @@ function toggleSelectionMenu(file) {
         }
         img.src = currentImageSrc;
     }
+
 
     function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
         const words = text.split(' ');
@@ -118,60 +155,99 @@ function toggleSelectionMenu(file) {
         return totalHeight;
     }
 
-
     function uploadTextDesign() {
         const textBox = document.querySelector('.blanketText');
         const textInput = textBox.value;
         const canvas = document.getElementById('canvas-window');
         const ctx = canvas.getContext('2d');
 
-        const textMetrics = ctx.measureText(textInput);
-        const textWidth = textMetrics.width;
-        const textHeight = 40;
-
         const x = canvas.width / 2;
         const y = canvas.height / 2;
+        const maxWidth = 500;
+        const lineHeight = 45;
 
         const img = new Image();
         img.onload = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous drawings
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = "black"; // Or your desired text color
-            ctx.font = "40px Pacifico"; // Or your desired font
+            ctx.fillStyle = "black";
+            ctx.font = "40px Pacifico";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            // ctx.fillText(textInput, x, y);
-
-            const maxWidth = 500;
-            const lineHeight = 45;
-
-            const totalHeight = wrapText(ctx, textInput, x, y - 25, maxWidth, lineHeight);
-
-            ctx.clearRect(x - maxWidth / 2, y - totalHeight / 2 - 25, maxWidth, totalHeight);
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
             wrapText(ctx, textInput, x, y - 25, maxWidth, lineHeight);
 
-            textBox.value = '';
-        }
+            textBox.value = ''; // Clear input after adding text
+        };
         img.src = currentImageSrc;
     }
 
+    function uploadImageDesign(imageSrc) {
+        const canvas = document.getElementById('canvas-window');
+        const ctx = canvas.getContext('2d');
+
+        const img = new Image();
+        img.onload = () => {
+            const scale = 0.6; // Adjust scale to control size
+            const newWidth = img.width * scale;
+            const newHeight = img.height * scale;
+
+            const x = (canvas.width - newWidth) / 2; // Correct centering
+            const y = 0; // Keep it at the top
+
+            // ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous image
+            ctx.drawImage(img, x, y, newWidth, newHeight); // Draw image at correct position
+        };
+        img.src = imageSrc;
+    }
+
+
+
     blanketButton.forEach(button => {
         button.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevents form submission
             toggleBlanketDiv(event);
             dropdownButtonDisplay(event);
-        });
-        button.addEventListener('mouseover', (event) => {
             const image = button.querySelector('img');
             currentImageSrc = image.src;
             toggleCustomizeWindow(currentImageSrc);
         });
     });
 
-    textButton.addEventListener('click', uploadTextDesign)
+    textButton.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevents form submission
+            uploadTextDesign(currentImageSrc);
+        }
+    });
+
+    designDiv.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevents form submission
+
+        const button = event.target.closest('.blanket-design'); // Find the clicked button
+        if (!button) return; // Ignore clicks outside buttons
+
+        toggleDesignDiv(event);
+        dropdownDesignButtonDisplay(event);
+
+        const image = button.querySelector('img');
+        if (image) {
+            designImageSrc = image.src;
+            uploadImageDesign(designImageSrc);
+        } else {
+            console.error("No image found in the clicked button.");
+        }
+    });
+
+    designDropdownButton.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevents form submission
+        toggleDesignDiv(event);
+    });
 }
 
 fetchBlanketImages();
+fetchDesignImages();
+fetchThreadColors();
 
 

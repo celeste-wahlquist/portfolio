@@ -1,4 +1,20 @@
-.cust-window {
+:root {
+    /* change the values below to your colors from your palette */
+    --primary-color: #B8A6D9;
+    --secondary-color: #80B0FF;
+    --accent-color1: #FDD5DE;
+    --accent-color2: #D6C3EC;
+    --accent-color3: #EFF5FF;
+    --text-dark: black;
+    --text-light: white;
+    --primary-font: "Dancing Script", serif;
+    --secondary-font: "Times New Roman", serif;
+    --paragraph-font: "Gentium Plus", serif;
+}
+
+
+
+.canvas-window {
     border: solid 2px black;
 }
 
@@ -14,11 +30,71 @@
     }
 
     #canvas-window {
-        border: solid 2px black;
-
+        border: solid 3px var(--secondary-color);
+        border-radius: 8px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
         font-family: 'Pacifico', cursive;
-
-
+        margin: 2em;
+        width: 30rem;
+        height: 30rem;
     }
 
+    .design-color img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .blanket-design img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .blanket__color-dropdown-button {
+        margin: 1em 0 1em 0;
+    }
+
+    .blanket__design-dropdown-button {
+        margin: 1em 0 1em 0;
+    }
+
+    #startOver {
+        margin: 1em 0 1em 0;
+    }
+
+    .button:hover {
+        background-color: #90b7f4;
+        transform: translateY(-2px);
+        transition: 0.3s;
+    }
+
+    .blanket__color-dropdown-menu {
+        margin-bottom: 1em;
+    }
+
+    .textInputLabel {
+        font-size: 1.2em;
+    }
+
+    .embroideryText {
+        display: flex;
+        flex-direction: column;
+        margin: 1em 0 1em 0;
+    }
+
+    #submitText {
+        width: 5em;
+    }
+
+    #customText {
+        width: 35em;
+        margin: 1em 0 1em 0;
+        height: 2em;
+        border-radius: 8px;
+        font-size: 1em;
+        font: var(--paragraph-font);
+    }
+
+    form {
+        font: var(--paragraph-font)
+    }
 }
