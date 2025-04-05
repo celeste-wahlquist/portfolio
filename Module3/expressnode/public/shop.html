@@ -49,19 +49,21 @@
                     placeholder="Your custom text!">
             </div>
 
-            <button type="button" class="blanket__embroidery-thread-dropdown-button button"
-                aria-label="open thread color dropdown menu">Select Thread Color</button>
-            <div id="blanket__embroidery-thread-dropdown-menu"></div>
-
-
+            <select type="button" class="blanket__embroidery-thread-dropdown-button button"
+                aria-label="open thread color dropdown menu" name="Select Thread Color">
+                <option value="" disabled selected>Select Thread Color</option>
+                <option id="threadColor" value="black">Black</option>
+                <option id="threadColor" value="white">White</option>
+                <option id="threadColor" value="red">Red</option>
+                <option id="threadColor" value="blue">Blue</option>
+                <option id="threadColor" value="green">Green</option>
+            </select>
             <button type="button" class="blanket__design-dropdown-button blanket-design button"
                 aria-label="open blanket design dropdown menu">Select Design</button>
             <div id="blanket__design-dropdown-menu"></div>
-
-            <!-- <button type="reset" id="startOver" class="button"
-                aria-label="begin the design process again">Submit</button> -->
-
+            <button type="button" class="button" id="submit-blanket-design">Submit</button>
         </form>
+
 
     </main>
     <footer></footer>

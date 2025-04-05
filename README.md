@@ -6,23 +6,33 @@ Description: A collection of works that exhibit my coding skills
 
 Purpose: to showcase myself and have a way of connecting with new opportunities
 
-{Provide a link to your YouTube demonstration.  It should be a one minute demo of the software running and a walkthrough of the code.}
-
-[Software Demo Video Module 1](http://youtube.link.goes.here)
+[Software Demo Video Module 1](https://youtu.be/koenKCoAS70)
 [Software Demo Video Module 2](https://youtu.be/bTmmmRCUYdM)
 [Software Demo Video Module 3](https://youtu.be/EPGiZCPrZig)
+[Software Demo Video Module 4](https://youtu.be/g_c0I0jodzE)
+[Software Demo Video Module 5](https://youtu.be/tdxubKSmPuM)
 
 # Development Environment
-M
-{Describe the tools: VSCode ChatGPT StackOverflow}
 
-{C#, HTML, CSS, JS}
+VSCode
+HTML
+CSS
+C#
+GitHub
+JavaScript
+Express Node
+Canvas 
+Unity
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+* [Node JS tutorial # 13 Display file list from folder](https://www.youtube.com/watch?v=mIWplmdkwDk)
+* [Stack Overflow: How to show user input over canvas with multiple text fields with text wrapping
+](https://stackoverflow.com/questions/58584613/how-to-show-user-input-over-canvas-with-multiple-text-fields-with-text-wrapping)
+* [Stack Overflow: Loading basic HTML in Node.js](https://stackoverflow.com/questions/4720343/loading-basic-html-in-node-js)
+* [Stack Overflow: How can I Remove .DS_Store files from a Git repository?](https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository)
+* [ChatGPT](https://chatgpt.com/)
+* [BlackBoxAI](https://www.blackbox.ai/)
 
 
 
@@ -33,11 +43,4 @@ M
 
 
 
-*these are just notes for me*
-ordering w/ email confiramtion
-on the blankets type in font style and see what it would look like
-as long as you type in name and see what it looks like in that font
-5 fonts 
-contact page
-orders upload to shipping easy
-jamie@abitofalex.com Zebbers88 
+

@@ -1,6 +1,7 @@
 const blanketDiv = document.getElementById('blanket__color-dropdown-menu');
 const designDiv = document.getElementById('blanket__design-dropdown-menu');
 let designImageSrc;
+
 async function fetchBlanketImages() {
     try {
         // Fetching the filenames of the images in the silk-blankets directory
@@ -53,19 +54,6 @@ function renderDesignImages(file) {
     designDiv.innerHTML += htmlDesignContent;
 }
 
-function fetchThreadColors() {
-    const threadColors = ["#FF5733", "#33FF57", "#3357FF", "#F1C40F", "#8E44AD", "#E74C3C", "#2ECC71", "#1ABC9C"];
-    threadColors.forEach(color => {
-        renderThreadColors(color);
-    });
-}
-
-function renderThreadColors(color) {
-    const htmlThreadContent = `
-        <button class="thread-color" style="background-color: ${color}"></button>
-    `;
-    threadDiv.innerHTML += htmlThreadContent;
-}
 
 function toggleSelectionMenu(file) {
     // all constructs for the following code are established here
@@ -73,10 +61,11 @@ function toggleSelectionMenu(file) {
     const blanketDropdownButton = document.querySelector('.blanket__color-dropdown-button');
     const designDropdownButton = document.querySelector('.blanket__design-dropdown-button');
     const blanketButton = document.querySelectorAll(".blanket-color");
-    const designButton = document.querySelectorAll(".blanket-design");
+    // const designButton = document.querySelectorAll(".blanket-design");
     const blanketDiv = document.getElementById('blanket__color-dropdown-menu');
     const designDiv = document.getElementById('blanket__design-dropdown-menu');
     const textButton = document.getElementById('customText');
+    let selectedThreadColor = "black";
 
     let currentImageSrc = '';
 
@@ -155,7 +144,7 @@ function toggleSelectionMenu(file) {
         return totalHeight;
     }
 
-    function uploadTextDesign() {
+    function uploadTextDesign(selectedThreadColor) {
         const textBox = document.querySelector('.blanketText');
         const textInput = textBox.value;
         const canvas = document.getElementById('canvas-window');
@@ -171,14 +160,14 @@ function toggleSelectionMenu(file) {
             ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous drawings
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = "black";
+            ctx.fillStyle = selectedThreadColor;
             ctx.font = "40px Pacifico";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
 
             wrapText(ctx, textInput, x, y - 25, maxWidth, lineHeight);
 
-            textBox.value = ''; // Clear input after adding text
+            // textBox.value = ''; // Clear input after adding text
         };
         img.src = currentImageSrc;
     }
@@ -244,10 +233,46 @@ function toggleSelectionMenu(file) {
         event.preventDefault(); // Prevents form submission
         toggleDesignDiv(event);
     });
+
+    document.querySelector('.blanket__embroidery-thread-dropdown-button').addEventListener("change", (event) => {
+        event.preventDefault();
+        selectedThreadColor = event.target.value || "black"; // Use selected color or default to black
+        uploadTextDesign(selectedThreadColor); // Re-run function to update text color
+    });
+
+    document.getElementById('submit-blanket-design').addEventListener('click', (event) => {
+        const orderData = {
+            blanketDesign: designImageSrc,
+            blanketColor: currentImageSrc,
+            text: textButton.value,
+            threadColor: selectedThreadColor
+        };
+
+        const dataString = `Submitted!\n\nBlanket Design: ${orderData.blanketDesign}\nBlanket Color: ${orderData.blanketColor}\nText: ${orderData.text}\nThread Color: ${orderData.threadColor}`;
+        alert(dataString); // Display the order data in an alert box
+
+        //help from ChatGPT with the value.replace that handles quotes inside text
+        const headers = Object.keys(orderData).join(",");
+        const values = Object.values(orderData).map(value => `"${value.replace(/"/g, '""')}"`).join(",");
+        const csvContent = `${headers}\n${values}`;
+
+
+        // Save CSV file locally
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'blanket-design.csv';
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+
 }
 
 fetchBlanketImages();
 fetchDesignImages();
-fetchThreadColors();
 
 
