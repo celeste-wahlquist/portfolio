@@ -30,7 +30,6 @@ Unity
 * [Stack Overflow: How to show user input over canvas with multiple text fields with text wrapping
 ](https://stackoverflow.com/questions/58584613/how-to-show-user-input-over-canvas-with-multiple-text-fields-with-text-wrapping)
 * [Stack Overflow: Loading basic HTML in Node.js](https://stackoverflow.com/questions/4720343/loading-basic-html-in-node-js)
-* [Stack Overflow: How can I Remove .DS_Store files from a Git repository?](https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository)
 * [ChatGPT](https://chatgpt.com/)
 * [BlackBoxAI](https://www.blackbox.ai/)
 
